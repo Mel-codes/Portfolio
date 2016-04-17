@@ -1,0 +1,30 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title == content_for?(:title) ? yield(:title) : "Portfolio"
+
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tag
+
+    body
+      .contain-to-grid
+        nav.top-bar data={topbar: true} role="navigation"
+          ul.title-area
+            li.name
+            li.toggle-topbar.menu-icon = link_to root_path do
+              span Menu
+
+          section.top-bar-section
+
+            ul.right
+              li = link_to "Home", root_path
+              li = link_to "About", root_path
+              li = link_to "Portfolio", root_path
+              
+    = yield
+
+    = javascript_include_tag "application"
